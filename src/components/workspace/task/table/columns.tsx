@@ -31,16 +31,16 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
             (table.getIsSomePageRowsSelected() && "indeterminate")
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-          className="translate-y-[2px]"
+          aria-label='Select all'
+          className='translate-y-[2px]'
         />
       ),
       cell: ({ row }) => (
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-          className="translate-y-[2px]"
+          aria-label='Select row'
+          className='translate-y-[2px]'
         />
       ),
       enableSorting: false,
@@ -49,15 +49,15 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
     {
       accessorKey: "title",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Title" />
+        <DataTableColumnHeader column={column} title='Title' />
       ),
       cell: ({ row }) => {
         return (
-          <div className="flex space-x-2">
-            <Badge variant="outline" className="capitalize shrink-0 h-[25px]">
+          <div className='flex flex-wrap space-x-2'>
+            <Badge variant='outline' className='capitalize shrink-0 h-[25px]'>
               {row.original.taskCode}
             </Badge>
-            <span className="block lg:max-w-[220px] max-w-[200px] font-medium">
+            <span className='block lg:max-w-[220px] max-w-[200px] font-medium'>
               {row.original.title}
             </span>
           </div>
@@ -70,7 +70,7 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
           {
             accessorKey: "project",
             header: ({ column }: { column: Column<TaskType, unknown> }) => (
-              <DataTableColumnHeader column={column} title="Project" />
+              <DataTableColumnHeader column={column} title='Project' />
             ),
             cell: ({ row }: { row: Row<TaskType> }) => {
               const project = row.original.project;
@@ -80,9 +80,9 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
               }
 
               return (
-                <div className="flex items-center gap-1">
-                  <span className="rounded-full border">{project.emoji}</span>
-                  <span className="block capitalize truncate w-[100px] text-ellipsis">
+                <div className='flex items-center gap-1'>
+                  <span className='rounded-full border'>{project.emoji}</span>
+                  <span className='block capitalize truncate w-[100px] text-ellipsis'>
                     {project.name}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
     {
       accessorKey: "assignedTo",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Assigned To" />
+        <DataTableColumnHeader column={column} title='Assigned To' />
       ),
       cell: ({ row }) => {
         const assignee = row.original.assignedTo || null;
@@ -104,14 +104,14 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
 
         return (
           name && (
-            <div className="flex items-center gap-1">
-              <Avatar className="h-6 w-6">
+            <div className='flex items-center gap-1'>
+              <Avatar className='h-6 w-6'>
                 <AvatarImage src={assignee?.profilePicture || ""} alt={name} />
                 <AvatarFallback className={avatarColor}>
                   {initials}
                 </AvatarFallback>
               </Avatar>
-              <span className="block text-ellipsis w-[100px] truncate">
+              <span className='block text-ellipsis w-[100px] truncate'>
                 {assignee?.name}
               </span>
             </div>
@@ -122,11 +122,11 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
     {
       accessorKey: "dueDate",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Due Date" />
+        <DataTableColumnHeader column={column} title='Due Date' />
       ),
       cell: ({ row }) => {
         return (
-          <span className="lg:max-w-[100px] text-sm">
+          <span className='lg:max-w-[100px] text-sm'>
             {row.original.dueDate ? format(row.original.dueDate, "PPP") : null}
           </span>
         );
@@ -135,11 +135,11 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
     {
       accessorKey: "status",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Status" />
+        <DataTableColumnHeader column={column} title='Status' />
       ),
       cell: ({ row }) => {
         const status = statuses.find(
-          (status) => status.value === row.getValue("status")
+          (status) => status.value === row.getValue("status"),
         );
 
         if (!status) {
@@ -147,7 +147,7 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
         }
 
         const statusKey = formatStatusToEnum(
-          status.value
+          status.value,
         ) as TaskStatusEnumType;
         const Icon = status.icon;
 
@@ -156,12 +156,12 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
         }
 
         return (
-          <div className="flex lg:w-[120px] items-center">
+          <div className='flex lg:w-[120px] items-center'>
             <Badge
               variant={TaskStatusEnum[statusKey]}
-              className="flex w-auto p-1 px-2 gap-1 font-medium shadow-sm uppercase border-0"
+              className='flex w-auto p-1 px-2 gap-1 font-medium shadow-sm uppercase border-0'
             >
-              <Icon className="h-4 w-4 rounded-full text-inherit" />
+              <Icon className='h-4 w-4 rounded-full text-inherit' />
               <span>{status.label}</span>
             </Badge>
           </div>
@@ -171,11 +171,11 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
     {
       accessorKey: "priority",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Priority" />
+        <DataTableColumnHeader column={column} title='Priority' />
       ),
       cell: ({ row }) => {
         const priority = priorities.find(
-          (priority) => priority.value === row.getValue("priority")
+          (priority) => priority.value === row.getValue("priority"),
         );
 
         if (!priority) {
@@ -183,7 +183,7 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
         }
 
         const statusKey = formatStatusToEnum(
-          priority.value
+          priority.value,
         ) as TaskPriorityEnumType;
         const Icon = priority.icon;
 
@@ -192,12 +192,12 @@ export const getColumns = (projectId?: string): ColumnDef<TaskType>[] => {
         }
 
         return (
-          <div className="flex items-center">
+          <div className='flex items-center'>
             <Badge
               variant={TaskPriorityEnum[statusKey]}
-              className="flex lg:w-[110px] p-1 gap-1 !bg-transparent font-medium !shadow-none uppercase border-0"
+              className='flex lg:w-[110px] p-1 gap-1 !bg-transparent font-medium !shadow-none uppercase border-0'
             >
-              <Icon className="h-4 w-4 rounded-full text-inherit" />
+              <Icon className='h-4 w-4 rounded-full text-inherit' />
               <span>{priority.label}</span>
             </Badge>
           </div>

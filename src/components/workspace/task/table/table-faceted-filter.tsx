@@ -55,26 +55,26 @@ export function DataTableFacetedFilter({
       <PopoverTrigger asChild>
         <Button
           disabled={disabled}
-          variant="outline"
-          size="sm"
-          className="h-8 border-dashed w-full lg:w-auto"
+          variant='outline'
+          size='sm'
+          className='h-8 border-dashed w-full lg:w-auto'
         >
           <PlusCircle />
           {title}
           {selectedValueSet.size > 0 && (
             <>
-              <Separator orientation="vertical" className="mx-0 h-4" />
+              <Separator orientation='vertical' className='mx-0 h-4' />
               <Badge
-                variant="secondary"
-                className="rounded-sm px-1 font-normal lg:hidden"
+                variant='secondary'
+                className='rounded-sm px-1 font-normal lg:hidden'
               >
                 {selectedValueSet.size}
               </Badge>
-              <div className="hidden space-x-1 lg:flex">
+              <div className='hidden space-x-1 lg:flex'>
                 {selectedValueSet.size > 1 ? (
                   <Badge
-                    variant="secondary"
-                    className="rounded-sm px-1 font-normal"
+                    variant='secondary'
+                    className='rounded-sm px-1 font-normal'
                   >
                     {selectedValueSet.size}
                   </Badge>
@@ -83,9 +83,9 @@ export function DataTableFacetedFilter({
                     .filter((option) => selectedValueSet.has(option.value))
                     .map((option) => (
                       <Badge
-                        variant="secondary"
+                        variant='secondary'
                         key={option.value}
-                        className="rounded-sm px-1 font-normal"
+                        className='rounded-sm px-1 font-normal'
                       >
                         {option.label}
                       </Badge>
@@ -96,7 +96,7 @@ export function DataTableFacetedFilter({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0" align="start">
+      <PopoverContent className='w-[200px] p-0' align='start'>
         <Command>
           <CommandInput placeholder={`Filter ${title}`} />
           <CommandList>
@@ -126,14 +126,14 @@ export function DataTableFacetedFilter({
                           "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
                           isSelected
                             ? "bg-primary text-primary-foreground"
-                            : "opacity-50 [&_svg]:invisible"
+                            : "opacity-50 [&_svg]:invisible",
                         )}
                       >
                         <Check />
                       </div>
                     )}
                     {option.icon && (
-                      <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                      <option.icon className='mr-2 h-4 w-4 text-muted-foreground' />
                     )}
                     <span>{option.label}</span>
                   </CommandItem>
@@ -143,10 +143,10 @@ export function DataTableFacetedFilter({
             {selectedValueSet.size > 0 && (
               <>
                 <CommandSeparator />
-                <CommandGroup className="sticky bottom-0 align-bottom bg-white">
+                <CommandGroup className='sticky bottom-0 align-bottom bg-white'>
                   <CommandItem
                     onSelect={() => onFilterChange([])} // Clear all filters
-                    className="justify-center text-center"
+                    className='justify-center text-center'
                   >
                     Clear filters
                   </CommandItem>

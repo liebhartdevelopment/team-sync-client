@@ -27,10 +27,10 @@ const priorityIcons = {
 
 export const statuses = transformOptions(
   Object.values(TaskStatusEnum),
-  statusIcons
+  statusIcons,
 );
 
 export const priorities = transformOptions(
   Object.values(TaskPriorityEnum),
-  priorityIcons
+  priorityIcons,
 );
