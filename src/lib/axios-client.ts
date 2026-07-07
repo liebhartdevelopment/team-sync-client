@@ -17,13 +17,16 @@ API.interceptors.response.use(
   },
   async (error) => {
     const { data, status } = error.response;
+
     if (data === "Unauthorized" && status === 401) {
       window.location.href = "/";
     }
+
     const customError: CustomError = {
       ...error,
       errorCode: data?.errorCode || "UNKNOWN_ERROR",
     };
+
     return Promise.reject(customError);
   },
 );
